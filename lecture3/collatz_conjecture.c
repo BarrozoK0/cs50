@@ -1,7 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int collatz (int n, int count);
+int collatz (int n);
 
 int main(void)
 {
@@ -9,24 +9,24 @@ int main(void)
     int number = get_int("Number: ");
 
     // Call collatz
-    int steps = collatz(number, 0);
+    int steps = collatz(number);
 
     // Print how many steps it took to get to 1
     printf("%i steps\n", steps);
 
 }
 
-int collatz (int n, int count)
+int collatz (int n)
 {
     // Base case
     if (n == 1)
-        return count;
+        return 0;
 
     // If number is even
     if (n % 2 == 0)
-        return collatz (n/2, count + 1);
+        return 1 + collatz(n/2);
 
     // If odd
-    return collatz (3*n + 1, count + 1);
+    return 1 + collatz(3*n + 1);
 
 }
